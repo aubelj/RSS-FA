@@ -2,6 +2,7 @@ package test;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -19,10 +20,19 @@ import javax.swing.JSplitPane;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.DefaultListModel;
+import java.util.ArrayList;
 
-public class Rss_aggregator {
+public class Rss_aggregator extends JFrame {
 
 	private JFrame frame;
+	private JTextField tfName;
+	//
+	private DefaultListModel lmName = new DefaultListModel();
+	//array list
+	private ArrayList<String>namensliste=new ArrayList<String>();
 
 	/**
 	 * Launch the application.
@@ -58,6 +68,18 @@ public class Rss_aggregator {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				lmName.removeAllElements();
+				namensliste.add(tfName.getText());
+				tfName.setText("");
+				for(String tmpName:namensliste)
+				{
+					lmName.addElement(tmpName);
+				}
+			}
+		});
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setIcon(new ImageIcon(Rss_aggregator.class.getResource("/test/plus-5-24.png")));
@@ -69,6 +91,8 @@ public class Rss_aggregator {
 		btnNewButton_1.setContentAreaFilled(false);
 		btnNewButton_1.setIcon(new ImageIcon(Rss_aggregator.class.getResource("/test/refresh-24.png")));
 		btnNewButton_1.setBounds(73, 11, 84, 33);
+	
+		
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("");
@@ -81,5 +105,21 @@ public class Rss_aggregator {
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 969, 54);
 		frame.getContentPane().add(panel);
+		
+		tfName = new JTextField();
+		tfName.setBounds(46, 89, 192, 20);
+		frame.getContentPane().add(tfName);
+		tfName.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 147, 228, 399);
+		frame.getContentPane().add(scrollPane);
+		
+		JList lfName = new JList(lmName);
+		scrollPane.setViewportView(lfName);
+		
+		JLabel lblUrl = new JLabel("URL");
+		lblUrl.setBounds(10, 92, 46, 14);
+		frame.getContentPane().add(lblUrl);
 	}
 }
