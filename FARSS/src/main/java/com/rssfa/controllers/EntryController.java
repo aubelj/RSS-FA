@@ -23,17 +23,5 @@ public class EntryController extends AbstractController {
 	 * Initalisation du gestionnaire d'évenements
 	 */
 	public void control() {
-		view.getAddButton().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				view.getLmName().removeAllElements();
-				view.getNamensliste().add(view.getTfName().getText());
-				view.getTfName().setText("");
-				for(String tmpName : view.getNamensliste())
-				{
-					view.getLmName().addElement(tmpName);
-				}
-			}
-		});
 	}
 }

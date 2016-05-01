@@ -8,12 +8,10 @@ import javax.swing.*;
 public class ContentView {
 	private JFrame frame;
 	private JButton addButton;
-	private JButton refreshButton;
 	private JPanel panel;
 	private JTextField tfName;
 	private JScrollPane scrollPane;
 	private JList lfName;
-	JLabel lblUrl;
 	
 	private DefaultListModel lmName = new DefaultListModel();
 	private ArrayList<String> namensliste = new ArrayList<String>();
@@ -37,10 +35,6 @@ public class ContentView {
 		panel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		frame.getContentPane().add(panel);
 	}
-	
-    public JButton getRefreshButton(){
-        return refreshButton;
-    }
     
     public JButton getAddButton(){
         return addButton;

@@ -21,6 +21,11 @@ public class Rss_aggregator extends JFrame {
 	private JFrame frame;
 	private JPanel panel;
 
+	UserController userController;
+	FlowController flowController;
+	EntryController entryController;
+	ContentController contentController;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -54,26 +59,39 @@ public class Rss_aggregator extends JFrame {
 		frame.setBounds(100, 100, 1300, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+
+		// Gestionnaire d'utilisateur
+		UserModel userModel = new UserModel();
+		UserView userView = new UserView(frame);
+		userController = new UserController(this, userModel, userView);
+	}
+
+	public void load() {
+		
+		frame.getContentPane().removeAll();
 		
 		// Gestionnaire de flux
 		FlowModel flowModel = new FlowModel();
-        FlowView flowView = new FlowView(frame); 
-        FlowController flowController = new FlowController(flowModel, flowView);
-		
+		FlowView flowView = new FlowView(frame); 
+		flowController = new FlowController(flowModel, flowView);
+
 		// Gestionnaire d'entrées
-        EntryModel entryModel = new EntryModel();
-        EntryView entryView = new EntryView(frame);
-//        EntryController entryController = new EntryController(entryModel, entryView);
+		EntryModel entryModel = new EntryModel();
+		EntryView entryView = new EntryView(frame);
+		entryController = new EntryController(entryModel, entryView);
 
 		// Gestionnaire de contenu
-        ContentModel contentModel = new ContentModel();
-        ContentView contentView = new ContentView(frame); 
-//        ContentController contentController = new ContentController(contentModel, contentView);
-        
+		ContentModel contentModel = new ContentModel();
+		ContentView contentView = new ContentView(frame); 
+		contentController = new ContentController(contentModel, contentView);
+
 		// Panel Top
 		panel = new JPanel();
 		panel.setBounds(0, 0, 1300, 40);
 		panel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		frame.getContentPane().add(panel);
+		
+		frame.setVisible(true);
+		frame.repaint();
 	}
 }

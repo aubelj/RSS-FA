@@ -3,8 +3,6 @@ package com.rssfa.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.AbstractAction;
-
 import com.rssfa.models.FlowModel;
 import com.rssfa.views.FlowView;
 
@@ -20,11 +18,21 @@ public class FlowController extends AbstractController{
 
 		this.control();
 	}
+	
+	/*
+	 * Initalisation de la liste
+	 */
+	public void load()
+	{
+		model.refreshList();
+	}
 
 	/*
 	 * Initalisation du gestionnaire d'évenements
 	 */
 	public void control() {
+
+		// Add Button
 		view.getAddButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -38,32 +46,6 @@ public class FlowController extends AbstractController{
 					}
 				}
 			}
-
-		});
-
-		//		btnNewButton.addActionListener(new ActionListener() {
-		//		public void actionPerformed(ActionEvent arg0) 
-		//		{
-		//			lmName.removeAllElements();
-		//			namensliste.add(tfName.getText());
-		//			tfName.setText("");
-		//			for(String tmpName:namensliste)
-		//			{
-		//				lmName.addElement(tmpName);
-		//			}
-		//		}
-		//	});
-
-		//		actionListener = new ActionListener() {
-		//			public void actionPerformed(ActionEvent actionEvent) {                  
-		//				linkBtnAndLabel();
-		//			}
-		//		};                
-		//		view.getButton().addActionListener(actionListener);   
+		});   
 	}
-	//
-	//	private void linkBtnAndLabel(){
-	//		model.incX();                
-	//		view.setText(Integer.toString(model.getX()));
-	//	}    
 }

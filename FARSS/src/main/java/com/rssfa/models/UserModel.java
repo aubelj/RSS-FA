@@ -6,23 +6,17 @@ import java.util.List;
 import com.rssfa.commons.ConnectionHandler;
 import com.rssfa.dto.FlowDto;
 
-public class FlowModel extends AbstractModel {
+public class UserModel extends AbstractModel {
 
-	private List<FlowDto> list;
 	private ConnectionHandler conh;
 	private Connection con;
 	
-	public FlowModel() {
+	public UserModel() {
 		 conh = new ConnectionHandler();
 //		 con = conh.getInstance();
 	}
 	
-	public void refreshList() {
-
+	public void login(final String email, final String password) {
+		
 	}
-	
-	public List <FlowDto> getList() {
-		return list;
-	}
-	
 }
